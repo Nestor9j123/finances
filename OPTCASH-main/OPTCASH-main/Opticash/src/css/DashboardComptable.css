@@ -1,0 +1,317 @@
+:root {
+    --gray-900: #111827;
+    --gray-800: #1F2937;
+    --purple-900: #0F0C24;
+    --purple-800: #1D1A3D;
+    --purple-600: #5B21B6;
+    --light-bg: #f3f4f6;
+    --light-text: #1F2937;
+}
+
+body {
+    background: linear-gradient(135deg, var(--purple-900) 0%, var(--purple-800) 100%);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #E5E7EB;
+    display: flex;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+body.light {
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+aside {
+    width: 220px;
+    min-height: 100vh;
+    background: rgba(15, 12, 36, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    transition: transform 0.3s ease;
+}
+
+aside.closed {
+    transform: translateX(-100%);
+}
+
+.logo {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    margin: auto;
+    padding: 7px;
+    margin-bottom: 2rem;
+    border: 1px solid;
+    border-image: linear-gradient(45deg, #5B21B6, #1D1A3D) 1;
+}
+
+.logo img {
+    max-width: 30px;
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(107, 114, 128, 0.2);
+}
+
+.nav-tooltip {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--purple-600);
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+.nav-link:hover .nav-tooltip {
+    opacity: 1;
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    aside {
+        width: 70px;
+        padding: 1rem 0.5rem;
+    }
+    .nav-text, .logo-text {
+        display: none;
+    }
+    .nav-tooltip {
+        left: 100%;
+    }
+}
+
+.hamburger-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--purple-600);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 400px) {
+    .hamburger-btn {
+        display: flex;
+    }
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--purple-600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+main {
+    margin-left: 200px;
+    box-sizing: border-box;
+    padding: 2rem;
+    min-height: 100vh;
+    width: 100%;
+    transition: margin-left 0.3s;
+}
+
+@media (max-width: 640px) {
+    main {
+        margin-left: 70px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    main {
+        margin-left: 0;
+    }
+}
+
+.kpi-card {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    border-radius: 0.75rem;
+}
+
+.kpi-card:hover {
+    transform: scale(1.02);
+}
+
+tr {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button i {
+    transition: transform 0.2s ease;
+}
+
+button:hover i {
+    transform: scale(1.1);
+}
+
+#exportMenu {
+    transform-origin: top right;
+    animation: scaleIn 0.15s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media print {
+    .kpi-card {
+        height: 500px !important;
+        page-break-inside: avoid;
+    }
+}
+
+.security-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.security-toggle:hover {
+    background-color: rgba(31, 41, 55, 0.3);
+    /* hover:bg-gray-800/30 */
+}
+
+.security-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(147, 51, 234);
+    /* bg-purple-600 */
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.security-btn:hover {
+    background-color: rgb(126, 34, 206);
+    /* hover:bg-purple-700 */
+}
+
+.security-input {
+    background-color: rgb(55, 65, 81);
+    /* bg-gray-700 */
+    border: 1px solid rgb(75, 85, 99);
+    /* border-gray-600 */
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.security-input:focus {
+    outline: none;
+    border-color: rgb(139, 92, 246);
+    /* focus:border-purple-500 */
+}
+
+.security-select {
+    background-color: rgb(55, 65, 81);
+    /* bg-gray-700 */
+    border: 1px solid rgb(75, 85, 99);
+    /* border-gray-600 */
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.compliance-item {
+    padding: 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: rgba(31, 41, 55, 0.3);
+    /* bg-gray-800/30 */
+    border-radius: 4px;
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - OptiCash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/DashboardComptable.css">
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="logo">
+            <img src="../assets/gefi_logo.png" alt="logo">
+        </div>
+        <nav class="space-y-4">
+            <a href="DashboardComptable.html" class="nav-link group">
+                <i class="fas fa-home text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Dashboard</span>
+                <span class="nav-tooltip">Dashboard</span>
+            </a>
+            <a href="transactions.html" class="nav-link group">
+                <i class="fas fa-money-check-alt text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Transactions</span>
+                <span class="nav-tooltip">Transactions</span>
+            </a>
+            <a href="points-vente.html" class="nav-link group">
+                <i class="fas fa-store text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Points de vente</span>
+                <span class="nav-tooltip">Points de vente</span>
+            </a>
+            <a href="rapports.html" class="nav-link group">
+                <i class="fas fa-chart-line text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Rapports</span>
+                <span class="nav-tooltip">Rapports Financiers</span>
+            </a>
+            <a href="securite.html" class="nav-link group">
+                <i class="fas fa-lock text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Sécurité</span>
+                <span class="nav-tooltip">Sécurité & Paramètres</span>
+            </a>
+            <a href="support.html" class="nav-link group">
+                <i class="fas fa-life-ring text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Support</span>
+                <span class="nav-tooltip">Support & Assistance</span>
+            </a>
+            <a href="#" class="nav-link group" id="logoutLink">
+                <i class="fas fa-sign-out-alt text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Déconnexion</span>
+                <span class="nav-tooltip">Déconnexion</span>
+            </a>
+        </nav>
+    </aside>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-adjust text-white"></i>
+    </div>
+    <div class="hamburger-btn" id="hamburgerBtn">
+        <i class="fas fa-bars text-white"></i>
+    </div>
+
+    <main id="mainContainer">
+        <h1 class="text-3xl font-bold mb-8">Transactions</h1>
+        <div class="overflow-x-auto">
+            <div class="overflow-x-auto rounded-lg border border-white/10 shadow-lg">
+                <table class="min-w-full bg-white/10">
+                    <thead class="bg-purple-600/20">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-sm font-semibold">Date</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold">Description</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold">Montant</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold">Type</th>
+                            <th class="px-4 py-3 text-center text-sm font-semibold">Détails</th>
+                            <th class="px-4 py-3 text-center text-sm font-semibold">Annuler</th>
+                            <th class="px-4 py-3 text-center text-sm font-semibold">Valider</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <!-- Ligne 1 -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-4 py-3 text-sm">2025-03-01</td>
+                            <td class="px-4 py-3 text-sm">Vente Station 1</td>
+                            <td class="px-4 py-3 text-sm font-medium">1,200f</td>
+                            <td class="px-4 py-3 text-sm">
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full">Crédit</span>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button onclick="toggleDetails('details1')"
+                                    class="text-purple-400 hover:text-purple-300 transition-colors"
+                                    title="Voir les détails">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button class="text-red-400 hover:text-red-300 transition-colors"
+                                    title="Annuler la transaction">
+                                    <i class="fas fa-times-circle"></i>
+                                </button>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button class="text-green-400 hover:text-green-300 transition-colors"
+                                    title="Valider la transaction">
+                                    <i class="fas fa-check-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Détails 1 -->
+                        <tr id="details1" class="hidden bg-white/5">
+                            <td colspan="7" class="px-4 py-3 text-sm">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div>
+                                        <p class="text-gray-400">Boutique</p>
+                                        <p>Boutique A</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400">Date & Heure</p>
+                                        <p>2025-03-01 14:35</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400">Référence</p>
+                                        <p>#TRX-45879</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400">Statut</p>
+                                        <p class="text-yellow-400">En attente</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Lignes suivantes (répéter le même pattern) -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-4 py-3 text-sm">2025-03-02</td>
+                            <td class="px-4 py-3 text-sm">Achat Stock</td>
+                            <td class="px-4 py-3 text-sm font-medium">300f</td>
+                            <td class="px-4 py-3 text-sm">
+                                <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full">Débit</span>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button onclick="toggleDetails('details2')"
+                                    class="text-purple-400 hover:text-purple-300 transition-colors"
+                                    title="Voir les détails">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button class="text-red-400 hover:text-red-300 transition-colors"
+                                    title="Annuler la transaction">
+                                    <i class="fas fa-times-circle"></i>
+                                </button>
+                            </td>
+                            <td class="px-4 py-3 text-center">
+                                <button class="text-green-400 hover:text-green-300 transition-colors"
+                                    title="Valider la transaction">
+                                    <i class="fas fa-check-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 flex justify-end space-x-3">
+                <!-- Bouton d'exportation -->
+                <div class="relative">
+                    <button id="exportButton" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg 
+                                   transition-all flex items-center space-x-2">
+                        <i class="fas fa-file-export"></i>
+                        <span>Exporter les données</span>
+                    </button>
+
+                    <!-- Menu déroulant -->
+                    <div id="exportMenu" class="hidden absolute right-0 mt-2 w-48 bg-purple-800 rounded-lg shadow-xl 
+                                border border-white/10 z-10">
+                        <div class="p-2">
+                            <a href="#" onclick="exportDocument('docx')" class="flex items-center space-x-2 px-3 py-2 hover:bg-purple-700/50 
+                                      rounded-md transition-colors">
+                                <i class="fas fa-file-word text-blue-400"></i>
+                                <span>Word (.docx)</span>
+                            </a>
+                            <a href="#" onclick="exportDocument('xlsx')" class="flex items-center space-x-2 px-3 py-2 hover:bg-purple-700/50 
+                                      rounded-md transition-colors">
+                                <i class="fas fa-file-excel text-green-400"></i>
+                                <span>Excel (.xlsx)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="logoutModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <h3 class="text-lg font-medium mb-4">Êtes-vous sûr de vouloir vous déconnecter ?</h3>
+                <div class="flex justify-end space-x-3">
+                    <button id="logoutCancel" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
+                        Annuler
+                    </button>
+                    <button id="logoutConfirm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                        Déconnecter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/DashboardComptable.js"></script>
+</body>
+
+</html>

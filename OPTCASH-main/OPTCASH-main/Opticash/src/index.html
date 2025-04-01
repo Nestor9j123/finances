@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginOptiCash</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+</head>
+
+<body>
+    <div class="login wrap">
+        <div class="h1">Connexion</div>
+        <input
+            pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+            placeholder="Email" id="email" name="email" type="text">
+        <input placeholder="Mot de passe" id="password" name="password" type="password">
+        <input value="se connecter" class="btn" type="submit">
+    </div>
+</body>
+
+</html>

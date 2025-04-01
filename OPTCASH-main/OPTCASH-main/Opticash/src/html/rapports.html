@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapports - OptiCash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/DashboardComptable.css">
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="logo">
+            <img src="../assets/gefi_logo.png" alt="logo">
+        </div>
+        <nav class="space-y-4">
+            <a href="DashboardComptable.html" class="nav-link group">
+                <i class="fas fa-home text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Dashboard</span>
+                <span class="nav-tooltip">Dashboard</span>
+            </a>
+            <a href="transactions.html" class="nav-link group">
+                <i class="fas fa-money-check-alt text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Transactions</span>
+                <span class="nav-tooltip">Transactions</span>
+            </a>
+            <a href="points-vente.html" class="nav-link group">
+                <i class="fas fa-store text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Points de vente</span>
+                <span class="nav-tooltip">Points de vente</span>
+            </a>
+            <a href="rapports.html" class="nav-link group">
+                <i class="fas fa-chart-line text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Rapports</span>
+                <span class="nav-tooltip">Rapports Financiers</span>
+            </a>
+            <a href="securite.html" class="nav-link group">
+                <i class="fas fa-lock text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Sécurité</span>
+                <span class="nav-tooltip">Sécurité & Paramètres</span>
+            </a>
+            <a href="support.html" class="nav-link group">
+                <i class="fas fa-life-ring text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Support</span>
+                <span class="nav-tooltip">Support & Assistance</span>
+            </a>
+            <a href="#" class="nav-link group" id="logoutLink">
+                <i class="fas fa-sign-out-alt text-lg text-gray-300"></i>
+                <span class="nav-text text-gray-300 font-medium">Déconnexion</span>
+                <span class="nav-tooltip">Déconnexion</span>
+            </a>
+        </nav>
+    </aside>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-adjust text-white"></i>
+    </div>
+    <div class="hamburger-btn" id="hamburgerBtn">
+        <i class="fas fa-bars text-white"></i>
+    </div>
+    <main id="mainContainer">
+        <h1 class="text-3xl font-bold mb-8">Rapports Financiers</h1>
+        <button onclick="window.print()"
+            class="mt-8 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+            📄 Imprimer le Rapport
+        </button>
+    </main>
+
+    <div id="logoutModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <h3 class="text-lg font-medium mb-4">Êtes-vous sûr de vouloir vous déconnecter ?</h3>
+                <div class="flex justify-end space-x-3">
+                    <button id="logoutCancel" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
+                        Annuler
+                    </button>
+                    <button id="logoutConfirm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                        Déconnecter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/Rapport.js"></script>
+</body>
+
+</html>
